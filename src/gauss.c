@@ -22,6 +22,7 @@ int eliminate(Matrix *mat, Matrix *b){
 			for (int g = i; g < mat->r; g++ ){ // pętla odejmuje wektor;
 				mat->data[j][g] -= mat->data[i][g] * wsp; //odejmowanie wektora
 			}
+			b->data[j][0] -= b->data[i][0] * wsp;
 		}
 		
 	}
