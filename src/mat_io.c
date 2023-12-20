@@ -67,3 +67,11 @@ void freeMatrix(Matrix * mat) {
 	free(mat);
 }
 
+void swapRows(Matrix* mat, int a, int b){
+	double* row_a = mat->data[a];
+	double* row_b = mat->data[b];
+
+	mat->data[a] = row_b;
+	mat->data[b] = row_a;
+}
+
