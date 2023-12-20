@@ -15,5 +15,6 @@ void printToScreen(Matrix *mat);
 
 Matrix * createMatrix(int r, int c);
 void freeMatrix(Matrix *mat);
+void swapRows(Matrix* mat, int a, int b);
 
 #endif
