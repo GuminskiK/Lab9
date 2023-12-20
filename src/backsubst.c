@@ -1,5 +1,4 @@
 #include "backsubst.h"
-#include <stdio.h>
 /**
  * Zwraca 0 - wsteczne podstawienie zakonczone sukcesem
  * Zwraca 1 - błąd dzielenia przez 0 (element na diagonali = 0)
@@ -14,7 +13,6 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
         // Zaczynamy od ostatniego wiersza
         const int ilosc_rownan = x->r;
 		const int ilosc_kolumn = x->r;
-
 		// Sprawdza czy wymiary są poprawne
         if(x->r != mat->r || mat->r != mat->c || x->c != 1 || b->c != 1 || b->r != x->r) return 2;
 
