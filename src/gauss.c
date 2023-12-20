@@ -4,6 +4,9 @@
  * Zwraca 0 - elimnacja zakonczona sukcesem
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
+void diagonal(Matrix *mat, int i, Matrix * b);
+void change(Matrix *mat, int i, int maks, Matrix *b);
+
 int eliminate(Matrix *mat, Matrix *b){
     
 	if (mat->r != mat->c){
@@ -14,6 +17,8 @@ int eliminate(Matrix *mat, Matrix *b){
 		if(mat->data[i][i] == 0){ // macierz osobliwa?
 			return 1;
 		}
+
+		diagonal(mat,i,b); //element diagonalny
 		for (int j = i + 1; j < mat->r; j++){  // pętla liczy dla każdego wiersza wsp
 			if(mat->data[j][i] == 0) { //dzielenie przez 0
 				return 1;	
@@ -33,4 +38,38 @@ int eliminate(Matrix *mat, Matrix *b){
 
 	return 0;
 }
+
+void diagonal(Matrix *mat, int i, Matrix * b){
+
+        int maks = i; 
+        for (int h = i; h <mat->r; h++){ //szukamy najwyższej co do modułu wartości w kolumnie
+                printf("%lf, %lf \n", fabs(mat->data[h][i]),fabs(mat->data[i][i]));
+                if (fabs(mat->data[h][i]) > fabs(mat->data[i][i])){
+                        maks = h;
+                }
+
+        }
+        if( maks != i ){
+                change(mat,i, maks,b);
+        }
+
+}
+
+void change(Matrix *mat, int i, int maks, Matrix * b){
+
+        double tmp;
+        for ( int h = 0; h < mat->r; h++){ //zamiana w macierzy A
+
+                tmp = mat->data[i][h];
+                mat->data[i][h] = mat->data[maks][h];
+                mat->data[maks][h] = tmp;
+
+
+        }
+        tmp = b->data[maks][0]; //zamiana w macirzy b
+        b->data[maks][0] = b->data[i][0];
+        b->data[i][0] = tmp;
+
+}
+
 
