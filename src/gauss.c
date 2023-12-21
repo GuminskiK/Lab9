@@ -12,7 +12,7 @@ int findMain(Matrix* mat, int column){
 	double biggestValue = -1;
 	int biggestIndex = -1;
 	
-	for(int i = 0; i < mat->r; i++) {
+	for(int i = column; i < mat->r; i++) {
 		double value = fabs(mat->data[i][column]);
 		if(value > biggestValue) {
 			biggestValue = value;
