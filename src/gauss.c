@@ -25,7 +25,7 @@ int findMain(Matrix* mat, int column){
 int eliminate(Matrix *mat, Matrix *b){
     
 	if (mat->r != mat->c){
-		return 1;
+		return 2;
 	}
 	int i;	
 	for(i = 0; i < mat->r - 1 ; i++ ){ // pętla po przekątnej; gdy jesteśmy w ostatnim wierszu to kończymy dlatego r-1
@@ -64,7 +64,6 @@ void diagonal(Matrix *mat, int i, Matrix * b){
 
         int maks = i; 
         for (int h = i; h <mat->r; h++){ //szukamy najwyższej co do modułu wartości w kolumnie
-                printf("%lf, %lf \n", fabs(mat->data[h][i]),fabs(mat->data[i][i]));
                 if (fabs(mat->data[h][i]) > fabs(mat->data[i][i])){
                         maks = h;
                 }
