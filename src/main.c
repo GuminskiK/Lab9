@@ -17,10 +17,16 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+	if(res == 1) fprintf(stderr, "Błąd! Macierz jest osobliwa\n");
+	else if(res == 2) fprintf(stderr, "Bład! Macierz ma złe wymiary\n");
+	if(res != 0) return res;
 
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
+			if(res == 1) fprintf(stderr, "Błąd! Macierz ma 0 na diagonali\n");
+			else if(res == 2) fprintf(stderr, "Bład! Macierz ma złe wymiary\n");
+			if(res != 0) return res;
 
 		printToScreen(x);
 	  freeMatrix(x);
