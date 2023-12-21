@@ -64,7 +64,7 @@ void diagonal(Matrix *mat, int i, Matrix * b){
 
         int maks = i; 
         for (int h = i; h <mat->r; h++){ //szukamy najwyższej co do modułu wartości w kolumnie
-                if (fabs(mat->data[h][i]) > fabs(mat->data[i][i])){
+                if (fabs(mat->data[h][i]) > fabs(mat->data[maks][i])){
                         maks = h;
                 }
 
